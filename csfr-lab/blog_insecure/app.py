@@ -24,7 +24,6 @@ def init_db():
         db.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
                    ["Welcome!", "This is the default post."])
         
-    db = get_db()
     db.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id       INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,6 +48,9 @@ def index():
 
 @app.route("/post", methods=["POST"])
 def create_post():
+    if "user" not in session:
+        return redirect("/login")
+    
     db = get_db()
     db.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
                [request.form["title"], request.form["content"]])
@@ -57,7 +59,6 @@ def create_post():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    error = None
     error = None
     if request.method == "POST":
         username = request.form["username"]
