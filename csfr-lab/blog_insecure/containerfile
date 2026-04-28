@@ -1,0 +1,19 @@
+# Base image — slim = smaller, no unnecessary packages
+FROM python:3.12-slim
+
+# Working directory inside the container
+WORKDIR /app
+
+# Copy and install dependencies first (Docker layer cache trick —
+# if only app.py changes, pip install won't re-run)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your app
+COPY . .
+
+# Tell Podman this container uses port 5000
+EXPOSE 5000
+
+# Command that runs when the container starts
+CMD ["python", "app.py"]
