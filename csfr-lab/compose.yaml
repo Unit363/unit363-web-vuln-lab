@@ -1,0 +1,14 @@
+name: csrf-lab
+
+services:
+  blog-insecure:
+    build: ./insecure_blog
+    container_name: insecure-blog
+    ports:
+      - "36301:36301"    # host:container
+
+  evil-page:
+    build: ./evil_page
+    container_name: evil_page
+    ports:
+      - "36302:36302"    # host:container
