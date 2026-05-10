@@ -1,4 +1,4 @@
-name: csrf-lab
+name: unit363-web-vuln-lab
 
 services:
   blog-insecure:
@@ -11,4 +11,4 @@ services:
     build: ./evil_page
     container_name: evil_page
     ports:
-      - "36302:36302"    # host:container
+      - "63601:63601"    # host:container

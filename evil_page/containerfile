@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Tell Podman this container uses port 5000
-EXPOSE 36302
+EXPOSE 63601
 
 # Command that runs when the container starts
 CMD ["python", "app.py"]
