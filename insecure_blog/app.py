@@ -59,8 +59,7 @@ def create_post():
         return redirect("/login")
     
     db = get_db()
-    db.execute("INSERT INTO posts (title, content) VALUES (title, content)",
-               [request.form["title"], request.form["content"]])
+    db.execute(f"INSERT INTO posts (title, content) VALUES ('{request.form["title"]}', '{request.form["content"]}')")
     db.commit()
     return redirect("/")
 

